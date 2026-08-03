@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Members Only</title>
+        <link href="/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1>Sign Up</h1>
+        <%- include("partials/errors.ejs") %>
+        <form action="/sign-up" method="POST">
+            <label for="firstname">First Name:</label>
+            <input type="text" name="firstname" placeholder="John" id="firstname" min=1 max=25 required />
+            <label for="lastname">Last Name:</label>
+            <input type="text" name="lastname" placeholder="Doe" id="lastname" min=1 max=25 required />
+            <label for="email">Email:</label>
+            <input type="email" name="email" placeholder="jdoe@gmail.com" id="email" min=3 max=25 required/>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required/>
+            <label for="confirm">Confirm Password:</label>
+            <input type="password" name="confirm" id="confirm" required/>
+            <button>Sign Up</button>
+        </form>
+    </body>
+</html>
