@@ -14,6 +14,10 @@
                 <form action="join-member" method="GET">
                     <button>Become a member</button>
                 </form>
+            <%} else if(user.member_status == 'member' && user.admin == false) {%>
+                <form action="new-admin" method="GET">
+                    <button>Become an admin</button>
+                </form>
             <%}%>
             <form action="new-message" method="GET">
                     <button>New Message</button>
@@ -34,6 +38,11 @@
             <% if (locals.user) {%>
                 <% if (user.member_status == 'member') {%>
                     <p>By: <%= message.first_name %> <%= message.last_name %> </p>
+                    <p>Sent On: <%= message.timestamp %>
+                <%}%>
+
+                <% if (user.admin == true) {%>
+                    <button>Delete Message</button>    
                 <%}%>
             <%}%>
         <% }) %>

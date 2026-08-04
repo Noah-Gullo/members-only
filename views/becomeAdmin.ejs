@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Members Only</title>
+        <link href="/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1>Become an Admin</h1>
+        <%- include("partials/errors.ejs") %>
+        
+        <% if (locals.user && user.member_status == 'member') {%>
+            <form action="/new-admin" method="POST">
+                <label for="password">What is the password?</label>
+                <input type="text" name="password" id="password" required/>
+                <button>Submit Password</button>
+            </form>
+        <% } else { %>
+            <p>You must be logged in and a member to become a admin!</p>
+        <%}%>
+        <a href="/">Back to Home</a>
+    </body>
+</html>

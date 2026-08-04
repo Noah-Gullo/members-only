@@ -20,6 +20,14 @@ async function becomeMember(userID){
     }
 }
 
+async function becomeAdmin(userID){
+    try{
+        await pool.query('UPDATE users SET admin=$2 WHERE id=$1', [userID, true]);
+    }catch(error){
+        console.log(error);
+    }
+}
+
 async function addMessage(userID, title, message){
     try{
         await pool.query('INSERT INTO messages (user_id, title, text, timestamp) VALUES ($1, $2, $3, $4)', [userID, title, message, new Date()]);
@@ -31,7 +39,6 @@ async function addMessage(userID, title, message){
 async function getMessages(){
     try{
         const {rows} = await pool.query('SELECT messages.*, users.first_name, users.last_name FROM messages INNER JOIN users on messages.user_id = users.id');
-        console.log(rows);
         return rows;
     }catch(error){
         console.log(error)
@@ -41,6 +48,7 @@ async function getMessages(){
 module.exports = {
     insertUser,
     becomeMember,
+    becomeAdmin,
     addMessage,
     getMessages
 };

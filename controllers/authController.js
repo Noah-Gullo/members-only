@@ -16,7 +16,16 @@ exports.handleJoinMember = async(req, res) => {
     if(password === process.env.MEMBER_PASSWORD){
         await db.becomeMember(req.user.id);
     }
-    res.redirect("/")
+    res.redirect("/");
+}
+
+exports.handleNewAdmin = async(req, res) => {
+    const password = req.body.password;
+    if(password === process.env.ADMIN_PASSWORD){
+        console.log("ENTERED CORRECT PASSWORD");
+        await db.becomeAdmin(req.user.id);
+    }
+    res.redirect("/");
 }
 
 exports.handleLogin = passport.authenticate('local', {

@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { signUpRules } = require('../controllers/validator.js');
-const { handleSignUp, handleJoinMember, handleLogin } = require('../controllers/authController.js');
+const { handleSignUp, handleJoinMember, handleNewAdmin, handleLogin } = require('../controllers/authController.js');
 const { handleGetMessages, handleNewMessage } = require("../controllers/messageController.js");
 const indexRouter = Router();
 
@@ -22,6 +22,9 @@ indexRouter.post("/login", handleLogin);
 
 indexRouter.get("/join-member", (req, res) => {res.render('becomeMember.ejs', {user: req.user})});
 indexRouter.post("/join-member", handleJoinMember);
+
+indexRouter.get("/new-admin", (req, res) => {res.render('becomeAdmin.ejs', {user: req.user})});
+indexRouter.post("/new-admin", handleNewAdmin);
 
 indexRouter.get("/new-message", (req, res) => {res.render('newMessageForm.ejs')});
 indexRouter.post("/new-message", handleNewMessage);
