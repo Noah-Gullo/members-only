@@ -30,9 +30,9 @@ app.use(
   }),
 );
 
-require("./passport"); 
 app.use(passport.initialize());
 app.use(passport.session());
+require("./passport"); 
 
 app.use("/", indexRouter);
 app.get("*error", (req, res) => {

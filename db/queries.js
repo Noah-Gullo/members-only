@@ -12,8 +12,12 @@ async function insertUser(first, last, username, password){
     }
 }
 
-async function becomeMember(){
-
+async function becomeMember(userID){
+    try{
+        await pool.query('UPDATE users SET member_status = $2 WHERE id=$1', [userID, 'member']);
+    }catch(error){
+        console.log(error);
+    }
 }
 
 module.exports = {

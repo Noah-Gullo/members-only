@@ -14,7 +14,7 @@ exports.handleSignUp = async(req, res, next) => {
 exports.handleJoinMember = async(req, res) => {
     const password = req.body.password;
     if(password === process.env.MEMBER_PASSWORD){
-        
+        await db.becomeMember(req.user.id);
     }
     res.redirect("/")
 }
