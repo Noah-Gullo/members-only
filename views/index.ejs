@@ -42,7 +42,9 @@
                 <%}%>
 
                 <% if (user.admin == true) {%>
-                    <button>Delete Message</button>    
+                    <form action="/delete/<%= message.id %>" method="POST">
+                        <button>Delete Message</button>    
+                    </form>
                 <%}%>
             <%}%>
         <% }) %>

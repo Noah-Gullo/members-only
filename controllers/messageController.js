@@ -10,7 +10,17 @@ async function handleGetMessages(){
     return messages;
 }
 
+
+async function handleDeleteMessage(req, res){
+    console.log(req.user);
+    if(req.user.admin == true){
+        await db.deleteMessage(req.params.messageID);
+    }
+    res.redirect("/")
+}
+
 module.exports = {
     handleNewMessage,
-    handleGetMessages
+    handleGetMessages,
+    handleDeleteMessage
 }

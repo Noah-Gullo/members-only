@@ -36,6 +36,14 @@ async function addMessage(userID, title, message){
     }
 }
 
+async function deleteMessage(messageID){
+    try{
+        await pool.query('DELETE FROM messages WHERE id = $1', [messageID]);
+    }catch(error){
+        console.log(error);
+    }
+}
+
 async function getMessages(){
     try{
         const {rows} = await pool.query('SELECT messages.*, users.first_name, users.last_name FROM messages INNER JOIN users on messages.user_id = users.id');
@@ -50,5 +58,6 @@ module.exports = {
     becomeMember,
     becomeAdmin,
     addMessage,
+    deleteMessage,
     getMessages
 };

@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { signUpRules } = require('../controllers/validator.js');
 const { handleSignUp, handleJoinMember, handleNewAdmin, handleLogin } = require('../controllers/authController.js');
-const { handleGetMessages, handleNewMessage } = require("../controllers/messageController.js");
+const { handleGetMessages, handleNewMessage, handleDeleteMessage } = require("../controllers/messageController.js");
 const indexRouter = Router();
 
 indexRouter.use((req, res, next) => {
@@ -28,6 +28,8 @@ indexRouter.post("/new-admin", handleNewAdmin);
 
 indexRouter.get("/new-message", (req, res) => {res.render('newMessageForm.ejs')});
 indexRouter.post("/new-message", handleNewMessage);
+
+indexRouter.post("/delete/:messageID", handleDeleteMessage);
 
 indexRouter.get("/log-out", (req, res, next) => {
     req.logout((err) => {
