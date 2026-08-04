@@ -20,15 +20,12 @@ CREATE TABLE messages(
   text VARCHAR(255) NOT NULL,
   timestamp TIMESTAMP NOT NULL
 );
-
-INSERT INTO users(first_name, last_name, username, password, member_status) VALUES
-('John', 'Doe', 'jdoe@gmail.com', 'password', 'user');
 `;
 
 async function main() {
   console.log("seeding...");
   const client = new Client({
-    connectionString: `postgresql://${process.env.USER}:${process.env.PASSWORD}@localhost:5432/members`,
+    connectionString: `postgresql://${process.env.ROLE_USER}:${process.env.ROLE_PASSWORD}@localhost:5432/members`,
   });
   await client.connect();
   await client.query(SQL);

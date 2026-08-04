@@ -7,13 +7,13 @@ const signUpRules = [
         .isAlphanumeric().withMessage('First name must contain only letters and numbers')
         .isLength({ min: 1, max: 25 }).withMessage('First name must be 1 to 25 characters long'),
 
-    body('lastName')
+    body('lastname')
         .trim()
         .notEmpty().withMessage('Last name is required')
         .isAlphanumeric().withMessage('Last name must contain only letters and numbers')
         .isLength({ min: 1, max: 25 }).withMessage('First name must be 1 to 25 characters long'),
 
-    body('email')
+    body('username')
         .isEmail().withMessage('Please input a valid email')
         .normalizeEmail(),
 
