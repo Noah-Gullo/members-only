@@ -3,10 +3,11 @@ const passport = require('passport');
 
 exports.handleSignUp = async(req, res, next) => {
     const newUser = await db.insertUser(req.body.firstname, req.body.lastname, req.body.username, req.body.password);
-    passport.authenticate("local", {
-        successRedirect: "/",
-        failureRedirect: "/",
-        failureMessage: true,
+    req.login(newUser, (err) => {
+        if(err){
+            return next(err);
+        }
+        return res.redirect("/");
     })
 }
 
