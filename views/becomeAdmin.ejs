@@ -8,7 +8,6 @@
 
     <body>
         <h1>Become an Admin</h1>
-        <%- include("partials/errors.ejs") %>
         
         <% if (locals.user && user.member_status == 'member') {%>
             <form action="/new-admin" method="POST">

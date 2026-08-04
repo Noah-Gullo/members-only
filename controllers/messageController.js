@@ -12,7 +12,6 @@ async function handleGetMessages(){
 
 
 async function handleDeleteMessage(req, res){
-    console.log(req.user);
     if(req.user.admin == true){
         await db.deleteMessage(req.params.messageID);
     }
