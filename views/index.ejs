@@ -15,6 +15,9 @@
                     <button>Become a member</button>
                 </form>
             <%}%>
+            <form action="new-message" method="GET">
+                    <button>New Message</button>
+                </form>
             <a href="/log-out">LOG OUT</a>
         <% } else { %>
             <form action="/login" method="GET">
@@ -24,5 +27,15 @@
                 <button>Sign Up</button>
             </form>
         <%}%>
+
+        <% messages.forEach((message) => { %>
+            <h2><%= message.title %></h2>
+            <p> <%= message.text %> </p>
+            <% if (locals.user) {%>
+                <% if (user.member_status == 'member') {%>
+                    <p>By: <%= message.first_name %> <%= message.last_name %> </p>
+                <%}%>
+            <%}%>
+        <% }) %>
     </body>
 </html>

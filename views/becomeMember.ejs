@@ -10,16 +10,15 @@
         <h1>Become a Member</h1>
         <%- include("partials/errors.ejs") %>
         
-        <% if (locals.user) {%>
+        <% if (locals.user && user.member_status == 'user') {%>
             <form action="/join-member" method="POST">
                 <label for="password">What is the password?</label>
                 <input type="text" name="password" id="password" required/>
                 <button>Submit Password</button>
             </form>
-            <a href="/">Back to Home</a>
         <% } else { %>
             <p>You must be logged in to become a member!</p>
-            <a href="/">Back to Home</a>
         <%}%>
+        <a href="/">Back to Home</a>
     </body>
 </html>

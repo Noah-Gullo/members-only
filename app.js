@@ -34,6 +34,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 require("./passport"); 
 
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
+
 app.use("/", indexRouter);
 app.get("*error", (req, res) => {
     if(res.status(404)){

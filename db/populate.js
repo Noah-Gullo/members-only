@@ -1,8 +1,8 @@
 #! .env
 const { Client } = require("pg");
 const SQL = `
-DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS messages;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE users(
   ID INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -16,9 +16,11 @@ CREATE TABLE users(
 
 CREATE TABLE messages(
   ID INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  user_id INT,
   title VARCHAR(255) NOT NULL,
   text VARCHAR(255) NOT NULL,
-  timestamp TIMESTAMP NOT NULL
+  timestamp TIMESTAMP NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(ID)
 );
 `;
 

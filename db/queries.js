@@ -20,7 +20,27 @@ async function becomeMember(userID){
     }
 }
 
+async function addMessage(userID, title, message){
+    try{
+        await pool.query('INSERT INTO messages (user_id, title, text, timestamp) VALUES ($1, $2, $3, $4)', [userID, title, message, new Date()]);
+    }catch(error){
+        console.log(error);
+    }
+}
+
+async function getMessages(){
+    try{
+        const {rows} = await pool.query('SELECT messages.*, users.first_name, users.last_name FROM messages INNER JOIN users on messages.user_id = users.id');
+        console.log(rows);
+        return rows;
+    }catch(error){
+        console.log(error)
+    }
+}
+
 module.exports = {
     insertUser,
     becomeMember,
+    addMessage,
+    getMessages
 };
