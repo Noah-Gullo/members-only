@@ -21,7 +21,7 @@
             <%}%>
             <form action="new-message" method="GET">
                     <button>New Message</button>
-                </form>
+            </form>
             <a href="/log-out">Log Out</a>
         <% } else { %>
             <form action="/login" method="GET">
@@ -33,20 +33,22 @@
         <%}%>
 
         <% messages.forEach((message) => { %>
-            <h2><%= message.title %></h2>
-            <p> <%= message.text %> </p>
-            <% if (locals.user) {%>
-                <% if (user.member_status == 'member') {%>
-                    <p>By: <%= message.first_name %> <%= message.last_name %> </p>
-                    <p>Sent On: <%= message.timestamp %>
-                <%}%>
+            <div class="message">
+                <h2 class="messageTitle"><%= message.title %></h2>
+                <p> <%= message.text %> </p>
+                <% if (locals.user) {%>
+                    <% if (user.member_status == 'member') {%>
+                        <p>By: <%= message.first_name %> <%= message.last_name %> </p>
+                        <p>Sent On: <%= message.timestamp %>
+                    <%}%>
 
-                <% if (user.admin == true) {%>
-                    <form action="/delete/<%= message.id %>" method="POST">
-                        <button>Delete Message</button>    
-                    </form>
+                    <% if (user.admin == true) {%>
+                        <form action="/delete/<%= message.id %>" method="POST">
+                            <button class="deleteButton">Delete Message</button>    
+                        </form>
+                    <%}%>
                 <%}%>
-            <%}%>
+            </div>
         <% }) %>
     </body>
 </html>

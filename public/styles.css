@@ -1,0 +1,79 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1, h2, button, a, p{
+    display: flex;
+    justify-self: center;
+}
+
+form, .message{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.message{
+    margin: 1em;
+    padding: 0.5em;
+    border: 2px solid black;
+    border-radius: 1em;
+    background-color: rgb(232, 232, 232);
+    transition: ease-in-out 0.2s;
+}
+
+.message:hover {
+    border: 3px solid black;
+    padding: 1em;
+    background-color: rgb(205, 205, 205);
+}
+
+button{
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    font-weight: bold;
+    margin: 0.5em;
+    transition: padding ease-in-out 0.2s;
+}
+
+button:hover{
+    padding: 0.75em;
+    background-color: rgb(112, 112, 255);
+}
+
+button:active{
+    padding: 0.6em;
+}
+
+.confirmButton{
+    background-color: green;
+}
+
+.confirmButton:hover{
+    background-color: #00ff00;
+}
+
+.deleteButton{
+    background-color: red;
+}
+
+.deleteButton:hover{
+    background-color: rgb(255, 83, 83);
+}
+
+
+a{
+    font-weight: bolder;
+    text-decoration: underline transparent;
+    transition: ease-in-out 0.2s;
+}
+
+a:hover{
+    text-decoration-color: currentColor;
+}

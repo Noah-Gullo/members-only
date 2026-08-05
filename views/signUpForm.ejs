@@ -9,18 +9,24 @@
     <body>
         <h1>Sign Up</h1>
         <%- include("partials/errors.ejs") %>
-        <form action="/sign-up" method="POST">
-            <label for="firstname">First Name:</label>
-            <input type="text" name="firstname" placeholder="John" id="firstname" min=1 max=25 required />
-            <label for="lastname">Last Name:</label>
-            <input type="text" name="lastname" placeholder="Doe" id="lastname" min=1 max=25 required />
-            <label for="username">Email:</label>
-            <input type="email" name="username" placeholder="jdoe@gmail.com" id="username" min=3 max=25 required/>
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required/>
-            <label for="confirm">Confirm Password:</label>
-            <input type="password" name="confirm" id="confirm" required/>
-            <button>Sign Up</button>
-        </form>
+        <% if (!locals.user) {%>
+            <form action="/sign-up" method="POST">
+                <label for="firstname">First Name:</label>
+                <input type="text" name="firstname" placeholder="John" id="firstname" min=1 max=25 required />
+                <label for="lastname">Last Name:</label>
+                <input type="text" name="lastname" placeholder="Doe" id="lastname" min=1 max=25 required />
+                <label for="username">Email:</label>
+                <input type="email" name="username" placeholder="jdoe@gmail.com" id="username" min=3 max=25 required/>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required/>
+                <label for="confirm">Confirm Password:</label>
+                <input type="password" name="confirm" id="confirm" required/>
+                <button  class="confirmButton">Sign Up</button>
+            </form>
+        <% } else { %>
+            <p>You are logged in. Please sign out if you want to create a new account.</p>
+        <%}%>
+        
+        <a href="/">Back to Home</a>
     </body>
 </html>
