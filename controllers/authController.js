@@ -22,7 +22,6 @@ exports.handleJoinMember = async(req, res) => {
 exports.handleNewAdmin = async(req, res) => {
     const password = req.body.password;
     if(password === process.env.ADMIN_PASSWORD){
-        console.log("ENTERED CORRECT PASSWORD");
         await db.becomeAdmin(req.user.id);
     }
     res.redirect("/");
